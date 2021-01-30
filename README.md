@@ -1,10 +1,16 @@
-<h1>haipai_judge</h1>
+# haipai_judge
 
-<h2>about</h2>
+## about
 Mリーグのデータを元に配牌から局収支を予想するアプリです
 
-<h2>App URL</h2>
+## App URL
 
 
-<h2>Remarks</h2>
+## Demo
+
+
+## Requirement
+
+
+## Note
 画像分類を盛り込みたかったため、二重に処理している部分があります。物体認識を取り入れて更新する予定です
