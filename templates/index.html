@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>mahjong_kyokushuushi</title>
+{% endblock %}
+
+{% block content %}
+
+<script>
+$(function() {
+    var selected_count = 0;
+    $('.pai').on('click', function() {
+        selected_count += 1;
+        if (selected_count > 14) {
+            alert('選択できるのは13枚までです。');
+            return;
+        }
+        pai = $(this).val();
+        html_input = '<input name="pai" type="hidden" value="static/img/' + pai + '.jpeg">';
+        html_img = '<img src="static/img/' + pai + '.jpeg">';
+        $('form').prepend(html_input);
+        $('form').prepend(html_img);
+    });
+});
+</script>
+
+<body bgcolor="#008080" style="text-align:center; color:#ffffff;">
+
+ <div>
+    <h2><u>Mリーグのデータを元に配牌から局収支を予想します</u></h2>
+
+    <p>最初にドラを、次に配牌を13枚選択してください</p>
+
+ </div>
+
+ <div>
+    <div style="padding-top:5px;">
+	{% set manzu = ["1","2","3","4","5","6","7","8","9","10"] %}
+        {% for m in manzu %}
+	    <button class="pai" value="{{m}}" style="border:none;background:transparent;">
+                <img src="static/img/{{m}}.jpeg">
+            </button>
+        {% endfor %}
+    </div>
+
+    <div style="padding-top:5px;">
+	{% set pinzu = ["11","12","13","14","15","16","17","18","19","20"] %}
+        {% for p in pinzu %}
+            <button class="pai" value="{{p}}" style="border:none;background:transparent;">
+                <img src="static/img/{{p}}.jpeg">
+            </button>
+        {% endfor %}
+    </div>
+
+    <div style="padding-top:5px;">
+	{% set souzu = ["21","22","23","24","25","26","27","28","29","30"] %}
+        {% for s in souzu %}
+            <button class="pai" value="{{s}}" style="border:none;background:transparent;">
+                <img src="static/img/{{s}}.jpeg">
+            </button>
+        {% endfor %}
+    </div>
+
+    <div style="padding-top:5px;">
+	{% set tu = ["31","32","33","34","35","36","37"] %}
+
+        {% for t in tu %}
+            <button class="pai" value="{{t}}" style="border:none;background:transparent;">
+                <img src="static/img/{{t}}.jpeg">
+            </button>
+        {% endfor %}
+    </div>
+ </div>
+
+<br />
+<br />
+
+    <form action="/show_result/" method="POST">
+
+        <br />
+	<br />
+        <input type="submit" value="go" style="color:#ffffff; background:#ff7f00; border-radius:5%; text-align:center; padding:24px 16px;font-size:18pt">
+        <input type="button" onclick="location.href='/'" value="reset" style="color:#ffffff; background:#1a1aff; border-radius:5%; text-align:center; padding:24px 4px; font-size:18pt">
+    </form>
+</body>
+
+{% endblock %}

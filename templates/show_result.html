@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>show_result</title>
+{% endblock %}
+
+{% block content %}
+
+<body bgcolor="#008080" style="text-align:center; color:#ffffff;">
+ <div style="padding:50px;">
+    {% for hand in my_hand %}
+        <img src="/static/img/{{hand}}.jpeg">
+    {% endfor %}
+ </div>
+
+ <div><b>ドラ　{{dora_number}}個</b></div>
+
+ <p><b>結果は！？　（上段：点、下段：％）</b></p>
+
+</body>
+
+ <div style="padding:20px;padding-left:400px; align:center;">{{result|safe}}</div>
+
+ <input type="button" onclick="location.href='/'" value="reset" style="color:#ffffff; background:#1a1aff; border-radius:5%; text-align:center; padding:24px 4px; font-size:18pt">
+
+
+{% endblock %}
